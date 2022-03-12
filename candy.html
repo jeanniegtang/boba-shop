@@ -53,15 +53,41 @@
            </section>
         </article>
     </main>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="candy.html">Candies</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
 
-<footer>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="candy.html">Candies</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</footer>
+<script>
+    window.addEventListener("DOMContentLoaded", function(e) {
+        const orderButtons = document.querySelectorAll("button[data-order]");
+
+        orderButtons.forEach(function(button) {
+            button.addEventListener("click", function(e) {
+                const button = e.currentTarget;
+                const container = button.parentNode;
+
+                const order = {
+                    id: button.getAttribute("data-order"),
+                    title: container.querySelector(".title").innerText,
+                    price: container.querySelector(".price").innerText,
+                    desc: container.querySelector(".desc").innerText,
+                };
+
+                localStorage.setItem("order", JSON.stringify(order));
+
+                const url = window.location.href.replace("candy.html",  "order.html");
+                window.location.href = url;
+            });
+        });
+    });
+</script>
+
 </html>
