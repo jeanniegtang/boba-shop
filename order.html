@@ -68,7 +68,8 @@
            </div>
 
 
-           <form action="http://localhost:5500/api/post" method="POST">
+           <form action="http://localhost:7071/api/post" method="POST">
+               <input type="hidden" id="candy-order" name="candy-order">
                 <div class="input-group">
                     <div><label for="first-name">First name</label></div>
                     <div><input type="text" name="first-name" id="first-name"/></div>
@@ -134,6 +135,9 @@
         if(order) {
             const candyOrder = JSON.parse(order);
 
+            const orderInput = document.querySelector("#candy-order");
+            orderInput.value = order;
+            
             const candy = document.querySelector(".candy");
             const title = candy.querySelector(".title");
             const price = candy.querySelector(".price");
