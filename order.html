@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="style.css" type="text/css"/>
     <title>Yummm Bite</title>
     <style>
+
+        @media only screen and (min-width: 768px) {
+            article {
+                width:350px;
+            }
+        }
         .input-group {
             margin-bottom: 20px;
         }
@@ -51,6 +57,17 @@
         <aside><img src="images/logo.png" alt="Yummm Bite Logo"></aside>
         <article>
            <h1>Order</h1>
+
+           <div class="candy">    
+            <img src="" alt=""/>
+            <div class="columns">
+                <div class="title"></div>
+                <div class="price"></div>
+            </div>
+            <p class="desc"></p>
+           </div>
+
+
            <form action="http://localhost:5500/api/post" method="POST">
                 <div class="input-group">
                     <div><label for="first-name">First name</label></div>
@@ -110,6 +127,27 @@
         </nav>
     </footer>
 </body>
+<script>
+    window.addEventListener("DOMContentLoaded", function(e) {
 
+        const order = localStorage.getItem("order");
+        if(order) {
+            const candyOrder = JSON.parse(order);
+
+            const candy = document.querySelector(".candy");
+            const title = candy.querySelector(".title");
+            const price = candy.querySelector(".price");
+            const desc = candy.querySelector(".desc");
+
+            title.innerText = candyOrder.title;
+            price.innerText = candyOrder.price;
+            desc.innerText = candyOrder.desc;
+
+            const img = candy.querySelector("img");
+            img.setAttribute("src", `images/${candyOrder.id}.png`);
+            img.setAttribute("alt", candyOrder.title);
+        }
+    });
+</script>
 
 </html>
