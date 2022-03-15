@@ -70,7 +70,8 @@
 
            <form action="http://localhost:7071/api/post" method="POST">
                <input type="hidden" id="candy-order" name="candy-order">
-                <div class="input-group">
+               <input type="hidden" id="location" name="location" >
+               <div class="input-group">
                     <div><label for="first-name">First name</label></div>
                     <div><input type="text" name="first-name" id="first-name"/></div>
                 </div>
@@ -131,13 +132,33 @@
 <script>
     window.addEventListener("DOMContentLoaded", function(e) {
 
+        let locationBox = document.querySelector("#location");
+
+        let location = {
+            latitude: "unknown",
+            longitude: "unknown",
+        }; 
+        window.navigator.geolocation.getCurrentPosition (
+            function(position) {
+                location = {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                };
+
+                locationBox.value = JSON.stringify(location);
+            },
+            function(error) {
+                locationBox.value = JSON.stringify(location);
+            }
+        );
+
         const order = localStorage.getItem("order");
         if(order) {
             const candyOrder = JSON.parse(order);
 
             const orderInput = document.querySelector("#candy-order");
             orderInput.value = order;
-            
+
             const candy = document.querySelector(".candy");
             const title = candy.querySelector(".title");
             const price = candy.querySelector(".price");
