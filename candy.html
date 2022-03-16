@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Candy | Yummm Bite</title>
 </head>
 <body>
@@ -15,7 +16,14 @@
                 <li><a href="candy.html">Candies</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+
+            <div class="cart-icon">
+                <p>0</p>
+                <i class="fa fa-shopping-cart">
+                </i>
+            </div>
         </nav>
+        
     </header>
     <main>
         <aside><img src="images/logo.png" alt="Yummm Bite Logo"></aside>
@@ -52,6 +60,7 @@
                </div>
            </section>
         </article>
+
     </main>
 
     <footer>
@@ -63,6 +72,14 @@
             </ul>
         </nav>
     </footer>
+
+    <div class="cart-box">
+        <div class="cart">
+            <i class="fa fa-close"></i>
+            <h1>Cart</h1>
+        </div>
+       
+    </div>
 </body>
 
 <script>
@@ -81,10 +98,12 @@
                     desc: container.querySelector(".desc").innerText,
                 };
 
-                localStorage.setItem("order", JSON.stringify(order));
-
+                localStorage.setItem(order.id, JSON.stringify(order));
+                
+            /*
                 const url = window.location.href.replace("candy.html",  "order.html");
                 window.location.href = url;
+            */
             });
         });
     });

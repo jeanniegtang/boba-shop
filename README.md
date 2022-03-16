@@ -15,3 +15,7 @@ Building Websites with HTML, CSS, and Javascript. Tutorial from Pluralsight
 3. JavaScript (Behavior)
     - Local Storage API
     - Geolocation API
+
+
+Extending from tutorial.
+4. Add shopping cart icon to candy.html

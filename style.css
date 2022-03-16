@@ -16,7 +16,7 @@ p{
 }
 
 header {
-    display: block;
+    display: inline;
     position: fixed;
     top: 0;
     left: 0;
@@ -37,9 +37,28 @@ nav > ul {
 }
 
 nav > ul > li {
-    display: inline-block;
+    display: inline;
     list-style: none;
     margin: 0 5px 0 5px;
+}
+
+.cart-icon {
+    display: inline;
+    float: right;
+    padding-right: 2em;
+    color:white;
+    cursor: pointer;
+    z-index: 1;
+    font-size: 20px;
+}
+.cart-icon p {
+    position:absolute;
+    top: .5rem;
+    right: 2.6rem;
+    font-size: 0.7rem;
+    background-color:#f39898;
+    padding: 2px 2px;
+    border-radius: 50%;
 }
 
 main {
@@ -52,6 +71,56 @@ main {
 
 footer {
     padding: 15px;
+}
+
+/* cart box */
+.cart-box {
+    position:fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background: #f39898;
+    z-index: 9999;
+    transition: 0.3s linear;
+    transform: scale(0);
+}
+.cart-box:active{
+    transform: scale(1);
+}
+
+.cart-box .cart {
+    position: relative;
+    height:50%;
+    width:80%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-box .cart i{
+    position: absolute;
+    right:0;
+    top: 0;
+    background: #f00;
+    padding: 10px 15px;
+    color: #fff;
+    cursor: pointer;
+
+}
+
+.cart-box .cart i:hover {
+    background:rgb(230, 12, 12);
+}
+
+.cart-box .cart h1 {
+    position: relative;
+    margin-top: 2%;
+    font-size: 2.8rem;
 }
 
 aside, article {
